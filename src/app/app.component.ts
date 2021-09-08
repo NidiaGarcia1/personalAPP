@@ -48,4 +48,8 @@ export class AppComponent  implements OnInit, AfterViewInit{
  addRol(rol:string){
    this.lista_roles.push(rol)
  }
+
+ recibirUsuario(usuario:any){
+   console.log("usuario",usuario)
+ }
 }

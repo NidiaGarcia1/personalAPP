@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Usuario } from 'src/app/interfaces/usuario';
+
 
 @Component({
   selector: 'app-crear-usuario',
@@ -8,16 +9,26 @@ import { Usuario } from 'src/app/interfaces/usuario';
 })
 export class CrearUsuarioComponent implements OnInit {
   nuevo_usuario:Usuario;
+  @Output() public setUsuario:EventEmitter<any> = new EventEmitter;
 
   constructor() {
-    this.nuevo_usuario = {nombre:'Cesar'
-    ,apellido_paterno:'Hernandez'
-    ,apellido_materno:'Baca'
-    ,activo:true,edad:26}
+    this.nuevo_usuario = {}
+
    }
 
   ngOnInit(): void {
 
+  }
+  registrarUsuario(){
+    let usuario_registro:Usuario = this.nuevo_usuario
+    usuario_registro.fecha_registro = new Date()
+    usuario_registro.activo = true
+    this.setUsuario.emit(usuario_registro)
+    alert("Usuario registrado")
+  }
+
+  limpiarCampos(){
+    this.nuevo_usuario={}
   }
 
 }
