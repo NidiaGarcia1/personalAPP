@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Usuario } from './interfaces/usuario';
 
 @Component({
   selector: 'app-root',
@@ -6,50 +8,29 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit, AfterViewInit{
-  usuario: any;
-  lista_roles : any[]
-  @ViewChild("div_body",{static: true}) body: ElementRef;
+ 
+  lista_usuarios:Usuario[]
 
-  constructor(elementRef:ElementRef){
-    this.body = elementRef;
-    this.lista_roles = []
-    this.addRol("Administrador");
-    this.addRol("Certificador");//estas son las primeras lineas
-    this.addRol("Operador");//estas son las primeras lineas
-    this.addRol("Cliente");//estas son las primeras lineas
-    console.log("this.lista_roles",this.lista_roles)
-    this.usuario = {
-      nombre: 'Cesar',
-      apellido: 'Gonzalez',
-      nacionalidad: 'peruano',
-    };
-    let usuario_temp = JSON.parse(JSON.stringify(this.usuario));
-    console.log("Constructor", usuario_temp);
+   constructor(private ngbModal:NgbModal){
+    this.lista_usuarios = [];
   }
 
-  ngOnInit(){
-    this.usuario.nombre = 'Carlos'
-    let usuario_temp = JSON.parse(JSON.stringify(this.usuario));
-    console.log("OnInit", this.usuario);
+  ngOnInit(){}
+  ngAfterViewInit(){}
+
+  mostrarModalNuevousuario(modalNuevoUsuario:any){
+    this.ngbModal.open(modalNuevoUsuario,{
+      centered:true,
+      size:"lg",
+      scrollable: true,
+      backdrop: 'static'
+    }).result.then(
+      (result) => {},
+      (reason) => {}
+    )
   }
 
-  ngAfterViewInit(){
-    this.usuario.nombre = 'Ricardo'    
-    let usuario_temp = JSON.parse(JSON.stringify(this.usuario));
-    console.log('ViewInit', this.usuario);
-
-    console.log("this.body",this.body);
-  }
-
- imprimirUsuario(){
-   alert(this.usuario.nombre)
- }
-
- addRol(rol:string){
-   this.lista_roles.push(rol)
- }
-
- recibirUsuario(usuario:any){
-   console.log("usuario",usuario)
+ recibirUsuario(usuario:Usuario){
+   this.lista_usuarios.push(usuario);
  }
 }

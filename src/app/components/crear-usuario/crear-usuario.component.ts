@@ -13,18 +13,16 @@ export class CrearUsuarioComponent implements OnInit {
 
   constructor() {
     this.nuevo_usuario = {}
-
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
   registrarUsuario(){
     let usuario_registro:Usuario = this.nuevo_usuario
     usuario_registro.fecha_registro = new Date()
     usuario_registro.activo = true
     this.setUsuario.emit(usuario_registro)
-    alert("Usuario registrado")
+    this.limpiarCampos();
   }
 
   limpiarCampos(){
