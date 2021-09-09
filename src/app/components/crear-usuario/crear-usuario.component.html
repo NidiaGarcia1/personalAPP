@@ -5,7 +5,7 @@
     <div class="card-body">
         <div class="form-group">
             <label>Nombre:</label>
-            <input class="form-control" type="text" [(ngModel)]="nuevo_usuario.nombre" required>
+            <input appOnFocusInit class="form-control" type="text" [(ngModel)]="nuevo_usuario.nombre" required>
         </div>
         <div class="form-group">
             <label>Apellido Paterno:</label>
@@ -21,7 +21,24 @@
         </div>            
     </div>
 <div class="card-footer">
-    <button class="btn btn-primary ml-3" (click)="registrarUsuario()"> Registrar   </button>
+    <button class="btn btn-success ml-3" (click)="abrirModalConfirmacionNuevoUsuario(modalConfirmacion)"> Registrar   </button>
     <button class="btn btn-primary ml-3" (click)="limpiarCampos()"> Limpiar   </button>
+    <button class="btn btn-warning ml-3" (click)="abrirModalPruebaConfirmacion()" >Abrir modal prueba</button>    
 </div>
 </div>
+
+
+<ng-template #modalConfirmacion let-c="close" let-d="dismiss">
+    <div class="modal-header d-flex align-items-center">
+        <span class="h5 m-0"> <i class="fa fa-filter mr-1"></i>Modal - confirmación</span>
+        <button class="close d-flex text-dak m-0 p-0" (click)="d('Cross click')"> Cerrar modal</button>
+    </div>
+    <div class="modal-body">
+        <h5>Desea confirmar el registro de Usuario?</h5>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-outline-cuccess btn-lg" (click)="c('Save')">  Confirmar</button>
+    <button type="button" class="btn btn-outline-secondary btn-lg" (click)="c('Close')">  Cerrar</button>
+    </div>
+    
+    </ng-template>

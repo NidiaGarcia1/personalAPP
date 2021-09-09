@@ -23,14 +23,17 @@
                 <th>
                     Fecha de Registro
                 </th>
+                <th>
+                    Nombre Completo
+                </th>
             </thead> 
             <tbody>
                 <tr *ngFor="let usuario of lista_usuarios">
                     <td>
-                        {{usuario.nombre}}
+                        {{usuario.nombre | lowerCase}}
                     </td>
                     <td>
-                        {{usuario.apellido_paterno}}
+                        {{usuario.apellido_paterno | upperCase}}
                     </td>
                     <td>
                         {{usuario.apellido_materno}}
@@ -43,7 +46,10 @@
                     </td>
                     <td>
                         {{usuario.fecha_registro | date:'medium'}}
-                    </td>            
+                    </td>          
+                    <td>
+                        {{usuario | returnName}}
+                    </td>                           
                 </tr>
             </tbody>   
         </table>

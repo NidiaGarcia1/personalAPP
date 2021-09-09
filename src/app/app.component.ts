@@ -32,5 +32,6 @@ export class AppComponent  implements OnInit, AfterViewInit{
 
  recibirUsuario(usuario:Usuario){
    this.lista_usuarios.push(usuario);
+   this.ngbModal.dismissAll()
  }
 }

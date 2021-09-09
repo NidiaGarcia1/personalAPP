@@ -5,8 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class UpperCasePipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform( texto:any): string {
+    if(texto){
+      return texto.toUpperCase();
+    }
+    else{
+      return texto
+    }
+
   }
 
 }

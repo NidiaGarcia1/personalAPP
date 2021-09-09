@@ -1,6 +1,8 @@
+
+<p appHighLigth> Bienvenido</p>
 <button class="btn btn-success" (click)="mostrarModalNuevousuario(modalNuevoUsuario)"> Abrir modal nuevo usuario
 </button>
-<!--<app-crear-usuario (setUsuario)="recibirUsuario($event)"></app-crear-usuario>-->
+
 <app-listar-usuarios [lista_usuarios]="lista_usuarios"></app-listar-usuarios>
 
 <ng-template #modalNuevoUsuario let-c="close" let-d="dismiss">
@@ -16,4 +18,6 @@
 </div>
 
 </ng-template>
+
+
 
