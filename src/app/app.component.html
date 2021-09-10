@@ -1,5 +1,12 @@
 
 <p appHighLigth> Bienvenido</p>
+
+<ul>
+    <li *ngFor="let usuario of usuarios_firestore">
+     {{usuario.nombre}} {{usuario.apellido_paterno}} {{usuario.apellido_materno}}
+
+    </li>
+</ul>
 <button class="btn btn-success" (click)="mostrarModalNuevousuario(modalNuevoUsuario)"> Abrir modal nuevo usuario
 </button>
 

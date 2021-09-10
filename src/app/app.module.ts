@@ -14,6 +14,9 @@ import { ReturnNamePipe } from './utils/pipes/return-name.pipe';
 import { OnFocusInitPipe } from './utils/pipes/on-focus-init.pipe';
 import { OnFocusInitDirective } from './utils/directives/on-focus-init.directive';
 import { UsuarioServiceService } from './services/usuario-service.service';
+import {AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import {AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { UsuarioServiceService } from './services/usuario-service.service';
     OnFocusInitDirective
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'my-appgen'),
+    AngularFireModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,

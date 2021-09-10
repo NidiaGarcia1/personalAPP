@@ -1,4 +1,5 @@
 export interface Usuario {
+    usuario_id?:string,
     nombre?:string,
     apellido_paterno?:string,
     apellido_materno?:string,

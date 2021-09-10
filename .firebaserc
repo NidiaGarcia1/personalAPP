@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "my-appgen"
+  },
+  "targets": {
+    "my-appgen": {
+      "hosting": {
+        "my-app": [
+          "my-appgen"
+        ]
+      }
+    }
+  }
+}

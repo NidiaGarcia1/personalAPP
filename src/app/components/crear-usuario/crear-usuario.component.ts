@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 
 
 @Component({
@@ -13,11 +14,17 @@ export class CrearUsuarioComponent implements OnInit {
   @Output() public setUsuario:EventEmitter<any> = new EventEmitter;
   @ViewChild("modalConfirmacion",{static:true}) modalConfirmacion: NgbModalRef;
 
-  constructor(private ngbModal:NgbModal) {
+  constructor(private ngbModal:NgbModal, private usuario_service:UsuarioServiceService) {
     this.nuevo_usuario = {}
    }
 
   ngOnInit(): void {}
+
+agregarUsuario(){
+ this.usuario_service.agregarUsuario(this.nuevo_usuario)
+}
+//editarUsuario(){}
+//eliminarUsuario(){}
 
 abrirModalConfirmacionNuevoUsuario(modalConfirmacion:any){
   this.ngbModal.open(modalConfirmacion,{
@@ -28,12 +35,13 @@ abrirModalConfirmacionNuevoUsuario(modalConfirmacion:any){
   }).result.then(
     (result) => {
       if(result == 'Save'){
-        this.registrarUsuario()
+        this.agregarUsuario()
       }
     }, (reason) => {}
   )
 }
 
+//DEPRECATED
 abrirModalPruebaConfirmacion(){
   this.ngbModal.open(this.modalConfirmacion,{
     centered:true,
@@ -50,7 +58,7 @@ abrirModalPruebaConfirmacion(){
   )  
 }
 
-
+//DEPRECATED
 registrarUsuario(){
     let usuario_registro:Usuario = this.nuevo_usuario
     usuario_registro.fecha_registro = new Date()
